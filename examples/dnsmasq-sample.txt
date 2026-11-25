@@ -1,0 +1,11 @@
+Nov 24 19:02:03 router dnsmasq[123]: query[A] example.com from 192.0.2.10
+Nov 24 19:02:03 router dnsmasq[123]: query[A] example.com from 192.0.2.10
+Nov 24 19:02:03 router dnsmasq[123]: forwarded example.com to 192.0.2.53
+Nov 24 19:02:03 router dnsmasq[123]: reply example.com is 192.0.2.80
+Nov 24 19:02:04 router dnsmasq[123]: 42 192.0.2.11/54321 query[AAAA] example.net from 192.0.2.11
+Nov 24 19:03:00 router dnsmasq[123]: UDP 43 2001:db8::10/54321 query[HTTPS] example.org from 2001:db8::10
+Nov 24 19:04:00 router dnsmasq[123]: TCP 44 192.0.2.11/54322 query[TXT] _service._tcp.example.test from 192.0.2.11
+Nov 24 19:05:00 router dnsmasq[123]: query[NS] . from 192.0.2.10
+2026-11-24T19:06:00-08:00 router dnsmasq[123]: query[A] updates.example.com from 192.0.2.12
+2026-11-24T19:10:00-08:00 router dnsmasq[123]: query[AAAA] updates.example.com from 192.0.2.12
+2026-11-24T19:20:00-08:00 router dnsmasq[123]: query[A] media.example.net from 192.0.2.11

@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "queryconfessional"
+version = "1.0.0"
+description = "Private, local dnsmasq DNS query inventory"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Jeffrey Dyer"}]
+dependencies = []
+
+[project.scripts]
+queryconfessional = "queryconfessional.__main__:main"
+
+[tool.setuptools.package-data]
+queryconfessional = ["static/*"]
+

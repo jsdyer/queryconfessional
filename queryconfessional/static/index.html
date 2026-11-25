@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow"><title>Query Confessional — private DNS inventory</title>
+  <link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+<header><div class="brand">QUERY CONFESSIONAL <span>LOCAL DNS INVENTORY</span></div><h1>What is asking for a domain?</h1>
+<p>Explore dnsmasq queries by device, domain and time. Your logs stay on this server; this page makes no external requests.</p></header>
+<main>
+  <div class="notice">A DNS query is a request to resolve a name. It does not prove that a connection was made, a page was visited, or a device is malicious. Background apps, caches, retries and shared device addresses affect the picture.</div>
+  <section id="login" hidden><h2>Unlock this dashboard</h2><label>Access token <input id="token" type="password" autocomplete="off"></label><button id="unlock" type="button">Unlock</button><p>The token stays in this tab's memory and clears when you reload.</p></section>
+  <form id="filters" aria-label="Filter DNS queries">
+    <label>Device <select id="device"><option value="">All devices</option></select></label>
+    <label>Domain contains <input id="domain" type="search" maxlength="253" placeholder="e.g. example.com"></label>
+    <label>Query type <select id="qtype"><option value="">All types</option></select></label>
+    <label>From (your local time) <input id="after" type="datetime-local"></label>
+    <label>To (your local time) <input id="before" type="datetime-local"></label>
+    <div class="actions"><button type="submit">Apply filters</button><button id="reset" type="button" class="secondary">Reset</button><button id="export" type="button" class="secondary">Export CSV</button></div>
+  </form>
+  <p id="status" role="status" aria-live="polite">Loading local inventory…</p>
+  <div id="error" role="alert" hidden></div>
+  <section id="empty" hidden><h2>No matching queries</h2><p>Try clearing your filters. For a new inventory, import a dnsmasq log in the terminal, then choose Apply filters.</p><pre>python -m queryconfessional import /path/to/dnsmasq.log --year 2026 --timezone America/Vancouver</pre><p>Replies, forwarding records and lines without supported timestamps are skipped.</p></section>
+  <section class="metrics" aria-label="Filtered query summary"><div><strong id="count-queries">0</strong><span>Queries logged</span></div><div><strong id="count-devices">0</strong><span>Device addresses</span></div><div><strong id="count-domains">0</strong><span>Distinct domains</span></div></section>
+  <p id="coverage" class="muted"></p>
+  <section><h2>Daily queries <small>UTC calendar days · latest 90 observed days</small></h2><div id="activity" class="activity"></div></section>
+  <div class="columns">
+  <section><h2>Domains <small>Top 100 by query count</small></h2><p class="muted">Choose a domain to filter the inventory.</p><div class="table-scroll"><table><thead><tr><th>Domain</th><th>Queries</th><th>Devices</th><th>Last query</th></tr></thead><tbody id="domains"></tbody></table></div></section>
+  <section><h2>Devices <small>Top 100 by query count</small></h2><p class="muted">An address may change or represent several clients behind a relay.</p><div class="table-scroll"><table><thead><tr><th>Address</th><th>Queries</th><th>Domains</th><th>Last query</th></tr></thead><tbody id="devices"></tbody></table></div></section>
+  </div>
+  <section><h2>Recent queries <small>Latest 200 matching records</small></h2><div class="table-scroll"><table><thead><tr><th>Time</th><th>Device</th><th>Domain</th><th>Type</th></tr></thead><tbody id="recent"></tbody></table></div></section>
+  <details><summary>How to read this inventory</summary><p>Counts measure query records, including repeats. A query can be served from the resolver's cache. Devices using encrypted DNS or another resolver will be missing. An empty result means no matching imported records, not no network activity.</p><p>Reimporting an unchanged or appended file at the same path is safe. A copied, renamed or rotated file is a new source and will count those records again. Import each capture under one stable path; do not import overlapping rotations.</p><p>System logs without a year or timezone use the values supplied during import. Split logs spanning New Year into separate files. Times in the tables use your browser timezone; CSV exports use UTC.</p><p>Nothing is uploaded. There are no domain reputation lookups, geolocation calls, third-party scripts or analytics. Exported files contain private browsing metadata: store them accordingly.</p></details>
+</main><footer>Query Confessional · self-hosted software from CoolCode · refresh with Apply filters after importing more logs</footer>
+</body></html>
+
