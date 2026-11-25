@@ -1,0 +1,17 @@
+{
+  "id": "queryconfessional",
+  "title": "Query Confessional",
+  "description": "Explore observed DNS queries by device, domain and time in your own dnsmasq logs.",
+  "category": "liminal-tools",
+  "tags": ["DNS", "dnsmasq", "privacy", "network", "homelab", "self-hosted"],
+  "icon": "network",
+  "url": "https://github.com/jsdyer/queryconfessional#readme",
+  "source": "https://github.com/jsdyer/queryconfessional",
+  "hosting": "external",
+  "access": "install",
+  "requirements": "Linux, Python 3.11+ and access to your own dnsmasq query logs",
+  "data_info": {
+    "mode": "installed",
+    "detail": "Your imported dnsmasq query logs stay on your server. Import captures locally to update the inventory; no public downloads or API keys are needed."
+  }
+}

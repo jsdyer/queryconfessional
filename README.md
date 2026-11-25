@@ -4,13 +4,9 @@ A private, self-hosted dashboard for answering **which devices are requesting wh
 
 This is installable software, not a public log-upload service. It runs with Python 3.11+ on Linux; there are no runtime Python dependencies, accounts, API keys, cloud services or scheduled public-data downloads. The interface works offline after installation.
 
-<!-- guide:start -->
-Query Confessional turns your own dnsmasq query logs into a private device/domain inventory. Import a log, open the local dashboard, choose a device address, and search for a domain such as `example.com`. Compare query counts, first/last activity and daily volumes; export the filtered records to CSV for further investigation.
-
-For example, filter to your media device and a vendor's domain to see whether requests were logged overnight. A DNS lookup does **not** prove a successful connection, page visit, data transfer or malicious behavior. Encrypted DNS and clients using other resolvers are outside the log's coverage.
-
-Requires Linux, Python 3.11+ and access to your own dnsmasq logs. Everything stays on your server. Logs without year/offset information require an explicit import year and source timezone. Reimporting the same unchanged/appended path is safe; copied or renamed captures count as separate sources, so do not import overlapping rotations.
-<!-- guide:end -->
+<!-- coolcode:guide -->
+Query Confessional turns your own dnsmasq query logs into a private device/domain inventory. Import a log, open the local dashboard, choose a device address, and filter a domain to see when DNS queries were observed. Compare query counts and daily activity, or export matching records to CSV. DNS queries do not prove successful connections, page visits or malicious behavior. Explicit source year/timezone settings are required; reimport unchanged or appended captures at the same path, and avoid overlapping rotations. Requires Linux, Python 3.11+ and access to your own dnsmasq logs.
+<!-- /coolcode:guide -->
 
 ## Start with the synthetic sample
 
